@@ -1,0 +1,9 @@
+{
+"To_MailSend":"naresh.kumar@e5.ai",
+"Port_Name":"465",
+"Server_Name":"smtp.gmail.com",
+"Imap_Port_Name":"993",
+"imap_Server_Name":"imap.gmail.com",
+"informationEmail":"dailyinformationbot@gmail.com",
+"UserName_Pwd":"InformationCredentials"
+}

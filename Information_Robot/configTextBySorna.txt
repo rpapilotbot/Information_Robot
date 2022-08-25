@@ -1,0 +1,36 @@
+{
+	"AssetName": "InformationCredentials",
+	"WeatherTirunelveliWeb": "https://www.timeanddate.com/weather/india/tirunelveli/ext",
+	"TirunelveliExcelPath": "New Microsoft Excel Worksheet.xlsx",
+	"TirunelveliSheet": "TirunelveliReport",
+	"WeatherIndiaWebsite": "https://www.timeanddate.com/weather/india",
+	"WeatherIndiaExcelPath": "New Microsoft Excel Worksheet.xlsx",
+	"IndiaSheet": "WeatherReportIndia",
+	"CurrencyWebsite": "http://www.extravelmoney.com/rates/",
+	"CurrencyExcelPath": "WorldCurrencyInIndianRate.xlsx",
+	"CurrencySheet": "Sheet1",
+	"PortNumber": "993",
+	"server": "imap.gmail.com",
+	"Receiver": "sornalakshmi2099@gmail.com",
+	"smtpPortNumber": "465",
+	"smtpServer": "smtp.gmail.com",
+	"SubjectOfWeather": "Tirunelveli And India Report",
+	"SubjectOfCurrency": "WorldcurrencencyinIndianRate",
+	"Keywords": {
+		"currency": "currency",
+		"paper money": "currency",
+		"cash": "currency",
+		"money": "currency",
+		"coin": "currency",
+		"bill": "currency",
+		"banknote": "currency",
+		"medium of exchange": "currency",
+                "temperature":"weather",
+                "meteorology":"weather",
+                "atmospheric conditions":"weather",
+                "weather":"weather",
+                "atmospheric pressure":"weather",
+                "cloud cover":"weather" 
+
+	}
+}

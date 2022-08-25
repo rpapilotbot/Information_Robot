@@ -1,0 +1,10 @@
+{
+"Fromaddress":"dailyinformationbot@gmail.com",
+"Toaddress":"sharongiftae5@gmail.com",
+"PortNumber":"993",
+"Servermail":"imap.gmail.com",
+"Subject":"Daily Information",
+"SmtpServer":"smtp.gmail.com",
+"Smtpport":"465",
+"InformationCred":"InformationCredentials"
+}

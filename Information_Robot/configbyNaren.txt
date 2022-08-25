@@ -1,0 +1,14 @@
+{
+            "FlipkartUrl": "https://www.flipkart.com/mobiles/smartphones~type/pr?sid=tyy,4io&otracker=undefined_footer_footer",
+			"HoroscopeUrl": "https://www.cyberastro.com/aries-daily-prediction",
+			"WriteMobileExcelPath": "DailyFlipkartMobileDescription.xlsx",
+			"WriteHoroscopeExcelPath": "DailyHoroscopeDescription.xlsx",
+			"SheetName": "Sheet1",
+			"MobileGmailSubject": "Prices of today's smart phones(The prices are taken from the flipkart website)" ,
+			"HoroscopeGmailSubject": "Daily Horoscope(Zodiac signs are taken from the cyberastro website)",
+            "MailTo":"sharongiftae5@gmail.com,sankaravenie5@gmail.com,aartiak.e5@gmail.com,sornalakshmie5@gmail.com,mvprashanth97@gmail.com,narenbagavathye5@gmail.com,sathyamoorthie5@gmail.com,lakshmi.n@e5.ai",
+            "PortNumber": "465",
+	         "ImapEmailAddress": "imap.gmail.com",
+            "SendEmailServer": "smtp.gmail.com",
+            "Assets":"InformationCredentials"
+}

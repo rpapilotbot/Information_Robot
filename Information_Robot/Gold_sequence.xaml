@@ -1,0 +1,563 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Gold_sequence" this:Gold_sequence.in_BrowserURL1="https://www.goodreturns.in/gold-rates/" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:um="clr-namespace:UiPath.Mail;assembly=UiPath.Mail.Activities" xmlns:umab="clr-namespace:UiPath.Mail.Activities.Business;assembly=UiPath.Mail.Activities" xmlns:umabh="clr-namespace:UiPath.Mail.Activities.Business.HtmlEditor;assembly=UiPath.Mail.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_BrowserURL1" Type="InArgument(x:String)" />
+    <x:Property Name="argument1" Type="InArgument(x:String)" />
+    <x:Property Name="ExtractDataTable1" Type="InArgument(x:String)" />
+    <x:Property Name="In_smtpPort" Type="InArgument(x:Int32)" />
+    <x:Property Name="In_smtpServer" Type="InArgument(x:String)" />
+    <x:Property Name="In_Emailsmtp" Type="InArgument(x:String)" />
+    <x:Property Name="In_Passwordsmtp" Type="InArgument(x:String)" />
+    <x:Property Name="In_ToEmailsmtp" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:Gold_sequence.In_smtpPort>
+    <InArgument x:TypeArguments="x:Int32" />
+  </this:Gold_sequence.In_smtpPort>
+  <this:Gold_sequence.In_smtpServer>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Gold_sequence.In_smtpServer>
+  <this:Gold_sequence.In_Emailsmtp>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Gold_sequence.In_Emailsmtp>
+  <this:Gold_sequence.In_Passwordsmtp>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Gold_sequence.In_Passwordsmtp>
+  <this:Gold_sequence.In_ToEmailsmtp>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Gold_sequence.In_ToEmailsmtp>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1608,4864</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Gold_sequence_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="45">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Mail.Activities.Business.HtmlEditor</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.ExtractData</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.Mail.Activities.Business</x:String>
+      <x:String>UiPath.Mail.SMTP.Activities</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>UiPath.Mail.Activities.Utils</x:String>
+      <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="36">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Gold_sequence" sap:VirtualizedContainerService.HintSize="616,4799" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="ExtractDataTable3" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Sequence DisplayName="Gold_sequence" sap:VirtualizedContainerService.HintSize="574,4707" sap2010:WorkflowViewState.IdRef="Sequence_14">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="sd:DataTable" Name="ExtractDataTable1" />
+        <Variable x:TypeArguments="sd:DataTable" Name="ExtractDataTable4" />
+        <Variable x:TypeArguments="sd:DataTable" Name="ExtractDataTable2" />
+        <Variable x:TypeArguments="sd:DataTable" Name="ExtractDataTable" />
+        <Variable x:TypeArguments="x:Int32" Default="1" Name="i" />
+        <Variable x:TypeArguments="x:String" Name="HTMLHeader" />
+        <Variable x:TypeArguments="x:String" Name="HTMLFooter" />
+        <Variable x:TypeArguments="x:String" Name="MiddleHTML" />
+        <Variable x:TypeArguments="sd:DataTable[]" Name="Array_DateTable" />
+        <Variable x:TypeArguments="sd:DataTable" Name="DT_Goldprice_2" />
+        <Variable x:TypeArguments="sd:DataTable" Name="DT_Goldprice_3" />
+        <Variable x:TypeArguments="sd:DataTable" Name="DT_Goldprice_4" />
+        <Variable x:TypeArguments="sd:DataTable" Name="DT_Goldprice_1" />
+        <Variable x:TypeArguments="x:String" Name="Rowvalue1" />
+        <Variable x:TypeArguments="x:String" Name="Rowvalue2" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Sequence sap:VirtualizedContainerService.HintSize="532,3162" sap2010:WorkflowViewState.IdRef="Sequence_8">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="x:Int32" Name="count" />
+          <Variable x:TypeArguments="sd:DataTable[]" Name="dataTables" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" CloseMode="Always" DisplayName="Use Browser Chrome: Gold Rate Today (15th July 2022), Gold Price in India - Goodreturns" sap:VirtualizedContainerService.HintSize="490,662" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" ScopeGuid="3b7dd441-ddd6-438b-8d92-05dd7de75d0b" Version="V2">
+          <uix:NApplicationCard.Body>
+            <ActivityAction x:TypeArguments="x:Object">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,446" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:String" Name="str_1" />
+                  <Variable x:TypeArguments="x:String" Name="str_2" />
+                  <Variable x:TypeArguments="x:Object" Name="str_3" />
+                  <Variable x:TypeArguments="x:Object" Name="str_4" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <uix:NExtractData AppendResults="False" ContinueOnError="True" DataTable="[ExtractDataTable1]" DisplayName="Extract Table Data" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Table'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-0' ReferenceIdx='0' Name='Column-0'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-1' ReferenceIdx='1' Name='Column-1'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-2' ReferenceIdx='2' Name='Column-2'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-3' ReferenceIdx='3' Name='Column-3'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract-table get_columns_name='1' get_empty_columns='1' columns_name_source='Longest'&gt;&lt;column name='Column-0' attr='text' /&gt;&lt;column name='Column-1' attr='text' /&gt;&lt;column name='Column-2' attr='text' /&gt;&lt;column name='Column-3' attr='text' /&gt;&lt;/extract-table&gt;" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NExtractData_1" InteractionMode="WindowMessages" LimitExtractionTo="Rows" MaximumResults="0" ScopeIdentifier="3b7dd441-ddd6-438b-8d92-05dd7de75d0b" Version="V1">
+                  <uix:NExtractData.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="300, 500, 660, 180" FriendlyName="'Gram 22'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div' id='moneyweb-leftPanel' parentid='moneyweb-container' tag='DIV' /&gt;&lt;webctrl tag='TABLE' parentid='moneyweb-leftPanel' /&gt;" Guid="e9b92047-4e30-4343-87a2-0704e0238b4c" InformativeScreenshot="c1de9d234899d0d648ed1e9fcc36072f.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Gold Rate Today * - Goodreturns' /&gt;" SearchSteps="Selector" Visibility="Interactive" />
+                  </uix:NExtractData.Target>
+                </uix:NExtractData>
+                <uix:NExtractData AppendResults="False" ContinueOnError="True" DataTable="[ExtractDataTable2]" DisplayName="Extract Table Data" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Table'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-0' ReferenceIdx='0' Name='Column-0'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-1' ReferenceIdx='1' Name='Column-1'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-2' ReferenceIdx='2' Name='Column-2'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-3' ReferenceIdx='3' Name='Column-3'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract-table get_columns_name='1' get_empty_columns='1' columns_name_source='Longest'&gt;&lt;column name='Column-0' attr='text' /&gt;&lt;column name='Column-1' attr='text' /&gt;&lt;column name='Column-2' attr='text' /&gt;&lt;column name='Column-3' attr='text' /&gt;&lt;/extract-table&gt;" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NExtractData_2" InteractionMode="WindowMessages" LimitExtractionTo="Rows" MaximumResults="0" ScopeIdentifier="3b7dd441-ddd6-438b-8d92-05dd7de75d0b" Version="V1">
+                  <uix:NExtractData.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="300, 508, 660, 180" FriendlyName="'Gram 24'" FullSelectorArgument="&lt;webctrl css-selector='body' tag='BODY' /&gt;&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;section' id='grslider0' parentid='moneyweb-leftPanel' tag='SECTION' /&gt;&lt;webctrl parentid='grslider0' tag='TABLE' /&gt;" Guid="da20cc3f-52e9-40b3-bf26-4e27b81423d3" InformativeScreenshot="d32b421b6090b1668667313f7150ae15.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Gold Rate Today * in India - Goodreturns' /&gt;" SearchSteps="Selector" Visibility="Interactive" />
+                  </uix:NExtractData.Target>
+                </uix:NExtractData>
+              </Sequence>
+            </ActivityAction>
+          </uix:NApplicationCard.Body>
+          <uix:NApplicationCard.TargetApp>
+            <uix:TargetApp Area="-8, -8, 1616, 876" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGWSURBVDhPY/j//z8Y//v0WvRLvdnLLyXK/wnh32c3RsH0wQ34feOQ64+tXa1gvLGl79uk4ONfipX/gjWVqvz9saGpDyT36+DcfJgeFAOw4d+Xd/p/KVP7BTLk5/5ZRdjUwBn/fnzhAdp67Gubwx1k/KVc4wfYFVW6n2Bivy9uC8Uw4Pel7QHfF+euQMdfO12vgQz42mj+FMT/sa5h4r+/f+H64Axc+NuM2J1gL+yY0IhNHkMAhkG2/Nw3oxwckE3Wj/99fS+ETR2cAVQgCLSl7ufuyTU/1tRO+9rudAtk87d+v9N/X91TRdaEjOGMv28fy4MDC+TfHs8LP7f3Nf65d9oGWTE2jML5vrRgCdiQGoN3f1/c0kSWw4VROP9+/WD/NiXsENgV7U63cfkbGWMI/PvyVgSkGez/GdF7//35zYyuBhljFfz78o7al1qjtyBDvgMDFJsaGMYqCMJ/bh+3h6bCv7+OLM7CpgaEsQrC8K/Ta+NABnwpVfv159ZRZ2xqMATQ8Y/tfc0gr4C89PfjKwlU+f8MAFA03X9OaopNAAAAAElFTkSuQmCC" InformativeScreenshot="6905d26a2a8ca6dd7e14c3fcc538aa2f.png" Selector="&lt;html app='chrome.exe' title='Gold Rate Today * - Goodreturns' url='https://www.goodreturns.in/gold-rates/' /&gt;" Url="[in_BrowserURL1]" />
+          </uix:NApplicationCard.TargetApp>
+        </uix:NApplicationCard>
+        <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" CloseMode="Always" DisplayName="Use Application/Browser" sap:VirtualizedContainerService.HintSize="490,466" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" ScopeGuid="a6a182bf-5712-490f-9f64-809301e34889" Version="V2">
+          <uix:NApplicationCard.Body>
+            <ActivityAction x:TypeArguments="x:Object">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,250" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:String" Name="str_2" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <uix:NExtractData AppendResults="False" ContinueOnError="True" DataTable="[ExtractDataTable2]" DisplayName="Extract Table Data" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Table'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-0' ReferenceIdx='0' Name='Column-0'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-1' ReferenceIdx='1' Name='Column-1'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-2' ReferenceIdx='2' Name='Column-2'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-3' ReferenceIdx='3' Name='Column-3'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract-table get_columns_name='1' get_empty_columns='1' columns_name_source='Longest'&gt;&lt;column name='Column-0' attr='text' /&gt;&lt;column name='Column-1' attr='text' /&gt;&lt;column name='Column-2' attr='text' /&gt;&lt;column name='Column-3' attr='text' /&gt;&lt;/extract-table&gt;" ExtractSimilar="True" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NExtractData_3" LimitExtractionTo="Rows" MaximumResults="0" Version="V1">
+                  <uix:NExtractData.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="300, 413, 660, 180" FriendlyName="'Gram 24'" FullSelectorArgument="&lt;webctrl parentid='grslider0' tag='TABLE' /&gt;" Guid="5271dfb6-3fac-4576-b838-e94beea38800" InformativeScreenshot="a5f84787ee5521aa29d556f688780dac.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Gold Rate Today (15th July 2022), Gold Price in India - Goodreturns' /&gt;" SearchSteps="Selector" Visibility="Interactive" />
+                  </uix:NExtractData.Target>
+                </uix:NExtractData>
+              </Sequence>
+            </ActivityAction>
+          </uix:NApplicationCard.Body>
+          <uix:NApplicationCard.TargetApp>
+            <uix:TargetApp Area="0, 0, 0, 0" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGWSURBVDhPY/j//z8Y//v0WvRLvdnLLyXK/wnh32c3RsH0wQ34feOQ64+tXa1gvLGl79uk4ONfipX/gjWVqvz9saGpDyT36+DcfJgeFAOw4d+Xd/p/KVP7BTLk5/5ZRdjUwBn/fnzhAdp67Gubwx1k/KVc4wfYFVW6n2Bivy9uC8Uw4Pel7QHfF+euQMdfO12vgQz42mj+FMT/sa5h4r+/f+H64Axc+NuM2J1gL+yY0IhNHkMAhkG2/Nw3oxwckE3Wj/99fS+ETR2cAVQgCLSl7ufuyTU/1tRO+9rudAtk87d+v9N/X91TRdaEjOGMv28fy4MDC+TfHs8LP7f3Nf65d9oGWTE2jML5vrRgCdiQGoN3f1/c0kSWw4VROP9+/WD/NiXsENgV7U63cfkbGWMI/PvyVgSkGez/GdF7//35zYyuBhljFfz78o7al1qjtyBDvgMDFJsaGMYqCMJ/bh+3h6bCv7+OLM7CpgaEsQrC8K/Ta+NABnwpVfv159ZRZ2xqMATQ8Y/tfc0gr4C89PfjKwlU+f8MAFA03X9OaopNAAAAAElFTkSuQmCC" InformativeScreenshot="e225cf66f0a916af510abbcfd79ad409.png" Selector="&lt;html app='chrome.exe' title='Gold Rate Today (15th July 2022), Gold Price in India - Goodreturns' /&gt;" Url="https://www.goodreturns.in/gold-rates/#Today+24+Carat+Gold+Rate+Per+Gram+in+India+%28INR%29" />
+          </uix:NApplicationCard.TargetApp>
+        </uix:NApplicationCard>
+        <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" CloseMode="Always" DisplayName="Use Application/Browser" sap:VirtualizedContainerService.HintSize="490,466" sap2010:WorkflowViewState.IdRef="NApplicationCard_3" InteractionMode="DebuggerApi" ScopeGuid="479b83fc-9794-42d5-ab9c-e203d593e1c7" Version="V2">
+          <uix:NApplicationCard.Body>
+            <ActivityAction x:TypeArguments="x:Object">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,250" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:String" Name="str_2" />
+                  <Variable x:TypeArguments="x:String" Name="str_3" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <uix:NExtractData AppendResults="False" ContinueOnError="True" DataTable="[ExtractDataTable3]" DisplayName="Extract Table Data" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Table'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-0' ReferenceIdx='0' Name='Column-0'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-0 Url' ReferenceIdx='1' Name='Column-0 Url'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-1' ReferenceIdx='2' Name='Column-1'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-2' ReferenceIdx='3' Name='Column-2'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract-table get_columns_name='1' get_empty_columns='1' columns_name_source='Longest'&gt;&lt;column name='Column-0' attr='text' name2='Column-0 Url' attr2='href' /&gt;&lt;column name='Column-1' attr='text' /&gt;&lt;column name='Column-2' attr='text' /&gt;&lt;/extract-table&gt;" ExtractSimilar="True" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NExtractData_4" LimitExtractionTo="Rows" MaximumResults="0" Version="V1">
+                  <uix:NExtractData.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="300, 262, 660, 880" FriendlyName="'City 22'" FullSelectorArgument="&lt;webctrl parentid='grslider1' tag='TABLE' /&gt;" Guid="149b4d60-6bf5-40b9-89c0-79cb83c2c18c" InformativeScreenshot="00b5221656932d94e7d16155a27696e0.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Gold Rate Today * - Goodreturns' /&gt;" SearchSteps="Selector" Visibility="Interactive" />
+                  </uix:NExtractData.Target>
+                </uix:NExtractData>
+              </Sequence>
+            </ActivityAction>
+          </uix:NApplicationCard.Body>
+          <uix:NApplicationCard.TargetApp>
+            <uix:TargetApp Area="0, 0, 0, 0" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGWSURBVDhPY/j//z8Y//v0WvRLvdnLLyXK/wnh32c3RsH0wQ34feOQ64+tXa1gvLGl79uk4ONfipX/gjWVqvz9saGpDyT36+DcfJgeFAOw4d+Xd/p/KVP7BTLk5/5ZRdjUwBn/fnzhAdp67Gubwx1k/KVc4wfYFVW6n2Bivy9uC8Uw4Pel7QHfF+euQMdfO12vgQz42mj+FMT/sa5h4r+/f+H64Axc+NuM2J1gL+yY0IhNHkMAhkG2/Nw3oxwckE3Wj/99fS+ETR2cAVQgCLSl7ufuyTU/1tRO+9rudAtk87d+v9N/X91TRdaEjOGMv28fy4MDC+TfHs8LP7f3Nf65d9oGWTE2jML5vrRgCdiQGoN3f1/c0kSWw4VROP9+/WD/NiXsENgV7U63cfkbGWMI/PvyVgSkGez/GdF7//35zYyuBhljFfz78o7al1qjtyBDvgMDFJsaGMYqCMJ/bh+3h6bCv7+OLM7CpgaEsQrC8K/Ta+NABnwpVfv159ZRZ2xqMATQ8Y/tfc0gr4C89PfjKwlU+f8MAFA03X9OaopNAAAAAElFTkSuQmCC" InformativeScreenshot="de3ee864c560d3dac7018f08086c77e9.png" Selector="&lt;html app='chrome.exe' title='Gold Rate Today * - Goodreturns' /&gt;" Url="https://www.goodreturns.in/gold-rates/#Indian+Major+Cities+Gold+Rates+Today" />
+          </uix:NApplicationCard.TargetApp>
+        </uix:NApplicationCard>
+        <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" CloseMode="Always" DisplayName="Use Application/Browser" sap:VirtualizedContainerService.HintSize="490,466" sap2010:WorkflowViewState.IdRef="NApplicationCard_4" InteractionMode="DebuggerApi" ScopeGuid="18c22df0-8b4b-46e9-97bf-9503ae7a984e" Version="V2">
+          <uix:NApplicationCard.Body>
+            <ActivityAction x:TypeArguments="x:Object">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,250" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:String" Name="str_4" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <uix:NExtractData AppendResults="False" ContinueOnError="True" DataTable="[ExtractDataTable4]" DisplayName="Extract Table Data" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Table'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-0' ReferenceIdx='0' Name='Column-0'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-1' ReferenceIdx='1' Name='Column-1'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-2' ReferenceIdx='2' Name='Column-2'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract-table get_columns_name='1' get_empty_columns='1' columns_name_source='Longest'&gt;&lt;column name='Column-0' attr='text' /&gt;&lt;column name='Column-1' attr='text' /&gt;&lt;column name='Column-2' attr='text' /&gt;&lt;/extract-table&gt;" ExtractSimilar="True" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NExtractData_5" LimitExtractionTo="Rows" MaximumResults="0" Version="V1">
+                  <uix:NExtractData.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="300, 245, 660, 387" FriendlyName="'Date 22'" FullSelectorArgument="&lt;webctrl parentid='grslider2' tag='TABLE' /&gt;" Guid="f968f41f-bb59-4633-bb26-70d7d652e304" InformativeScreenshot="d650df74bee18e06d65a18754eec3624.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Gold Rate Today * - Goodreturns' /&gt;" SearchSteps="Selector" Visibility="Interactive" />
+                  </uix:NExtractData.Target>
+                </uix:NExtractData>
+              </Sequence>
+            </ActivityAction>
+          </uix:NApplicationCard.Body>
+          <uix:NApplicationCard.TargetApp>
+            <uix:TargetApp Area="0, 0, 0, 0" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGWSURBVDhPY/j//z8Y//v0WvRLvdnLLyXK/wnh32c3RsH0wQ34feOQ64+tXa1gvLGl79uk4ONfipX/gjWVqvz9saGpDyT36+DcfJgeFAOw4d+Xd/p/KVP7BTLk5/5ZRdjUwBn/fnzhAdp67Gubwx1k/KVc4wfYFVW6n2Bivy9uC8Uw4Pel7QHfF+euQMdfO12vgQz42mj+FMT/sa5h4r+/f+H64Axc+NuM2J1gL+yY0IhNHkMAhkG2/Nw3oxwckE3Wj/99fS+ETR2cAVQgCLSl7ufuyTU/1tRO+9rudAtk87d+v9N/X91TRdaEjOGMv28fy4MDC+TfHs8LP7f3Nf65d9oGWTE2jML5vrRgCdiQGoN3f1/c0kSWw4VROP9+/WD/NiXsENgV7U63cfkbGWMI/PvyVgSkGez/GdF7//35zYyuBhljFfz78o7al1qjtyBDvgMDFJsaGMYqCMJ/bh+3h6bCv7+OLM7CpgaEsQrC8K/Ta+NABnwpVfv159ZRZ2xqMATQ8Y/tfc0gr4C89PfjKwlU+f8MAFA03X9OaopNAAAAAElFTkSuQmCC" InformativeScreenshot="5a7a0bb38b8b3af485dab68a9df01190.png" Selector="&lt;html app='chrome.exe' title='Gold Rate Today (15th July 2022), Gold Price in India - Goodreturns' /&gt;" Url="https://www.goodreturns.in/gold-rates/#Weekly+%26+Monthly+Graph+of+Gold+Price+in+India" />
+          </uix:NApplicationCard.TargetApp>
+        </uix:NApplicationCard>
+        <Assign sap:VirtualizedContainerService.HintSize="490,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Assign.To>
+            <OutArgument x:TypeArguments="sd:DataTable[]">[dataTables]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="sd:DataTable[]">[{ExtractDataTable1,ExtractDataTable2,ExtractDataTable3,ExtractDataTable4}]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <ui:ForEach x:TypeArguments="sd:DataTable" CurrentIndex="[count]" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="490,750" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[dataTables]">
+          <ui:ForEach.Body>
+            <ActivityAction x:TypeArguments="sd:DataTable">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="sd:DataTable" Name="item" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="454,626" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[i&lt;5]" DisplayName="While" sap:VirtualizedContainerService.HintSize="412,534" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+                  <ui:InterruptibleWhile.Body>
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,369" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="sd:DataTable" Name="str_1" />
+                      </Sequence.Variables>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:WriteRange AddHeaders="False" DataTable="[item]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="[&quot;Sheet&quot;+i.ToString]" WorkbookPath="Gold_Prices &amp; petrol_Prices.xlsx">
+                        <ui:WriteRange.StartingCell>
+                          <InArgument x:TypeArguments="x:String">
+                            <Literal x:TypeArguments="x:String" Value="" />
+                          </InArgument>
+                        </ui:WriteRange.StartingCell>
+                      </ui:WriteRange>
+                      <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Int32">[i]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Int32">[i+1]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <ui:Break sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Break_1" />
+                    </Sequence>
+                  </ui:InterruptibleWhile.Body>
+                </ui:InterruptibleWhile>
+              </Sequence>
+            </ActivityAction>
+          </ui:ForEach.Body>
+        </ui:ForEach>
+      </Sequence>
+      <Sequence sap:VirtualizedContainerService.HintSize="532,1322" sap2010:WorkflowViewState.IdRef="Sequence_10">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <Sequence sap:VirtualizedContainerService.HintSize="476,1230" sap2010:WorkflowViewState.IdRef="Sequence_9">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:String" Name="value" />
+            <Variable x:TypeArguments="x:String" Name="value1" />
+            <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="ExtractDataTable3" />
+            <Variable x:TypeArguments="sd:DataTable" Name="dt_value" />
+            <Variable x:TypeArguments="x:String" Name="pooto" />
+            <Variable x:TypeArguments="sd:DataTable" Name="dt_value1" />
+            <Variable x:TypeArguments="sd:DataTable" Name="dt_value3" />
+            <Variable x:TypeArguments="sd:DataTable" Name="dt_value4" />
+            <Variable x:TypeArguments="x:String" Name="Gold_content" />
+            <Variable x:TypeArguments="x:String" Name="dataTime_value" />
+            <Variable x:TypeArguments="x:String" Name="gold_htmlContent" />
+          </Sequence.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:ReadRange AddHeaders="False" DataTable="[dt_value]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="434,87" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="Gold_Prices &amp; petrol_Prices.xlsx">
+            <ui:ReadRange.Range>
+              <InArgument x:TypeArguments="x:String">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+            </ui:ReadRange.Range>
+          </ui:ReadRange>
+          <ui:ReadRange AddHeaders="False" DataTable="[dt_value1]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="434,87" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Sheet2" WorkbookPath="Gold_Prices &amp; petrol_Prices.xlsx">
+            <ui:ReadRange.Range>
+              <InArgument x:TypeArguments="x:String">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+            </ui:ReadRange.Range>
+          </ui:ReadRange>
+          <ui:ReadRange Range="{x:Null}" AddHeaders="False" DataTable="[dt_value3]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="434,87" sap2010:WorkflowViewState.IdRef="ReadRange_3" SheetName="Sheet3" WorkbookPath="Gold_Prices &amp; petrol_Prices.xlsx" />
+          <ui:ReadRange Range="{x:Null}" AddHeaders="False" DataTable="[dt_value4]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="434,87" sap2010:WorkflowViewState.IdRef="ReadRange_4" SheetName="Sheet4" WorkbookPath="Gold_Prices &amp; petrol_Prices.xlsx" />
+          <Assign sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[dataTime_value]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[DateAndTime.Now.ToString("MMM/dd/yyyy")]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="434,51" sap2010:WorkflowViewState.IdRef="CommentOut_7">
+            <ui:CommentOut.Body>
+              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="708,1069" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="666,977" sap2010:WorkflowViewState.IdRef="CommentOut_6">
+                  <ui:CommentOut.Body>
+                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="630,899" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="588,807" sap2010:WorkflowViewState.IdRef="CommentOut_5">
+                        <ui:CommentOut.Body>
+                          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="552,729" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <umab:GmailApplicationCard ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Account="dailyinformationbot@gmail.com" DisplayName="Use Gmail" EmailAddress="dailyinformationbot@gmail.com" sap:VirtualizedContainerService.HintSize="510,637" sap2010:WorkflowViewState.IdRef="GmailApplicationCard_1" Timeout="90" UseConnectionService="False">
+                              <umab:GmailApplicationCard.Body>
+                                <ActivityAction x:TypeArguments="um:IMailQuickHandle">
+                                  <ActivityAction.Argument>
+                                    <DelegateInArgument x:TypeArguments="um:IMailQuickHandle" Name="Gmail" />
+                                  </ActivityAction.Argument>
+                                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,456" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <umab:SendMailX Bcc="{x:Null}" Body="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" DisplayName="Send Email" sap:VirtualizedContainerService.HintSize="434,364" sap2010:WorkflowViewState.IdRef="SendMailX_1" Importance="Normal" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[&quot;Gold Details&quot; +dataTime_value.ToString]" To="[In_ToEmailsmtp]" UseDocumentAsBody="False">
+                                      <umab:SendMailX.Files>
+                                        <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                                      </umab:SendMailX.Files>
+                                      <umab:SendMailX.HtmlBodyFromFile>
+                                        <umabh:HtmlContentArgument FilePath=".data/HtmlContent2.html">
+                                          <umabh:HtmlContentArgument.RuntimeImages>
+                                            <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                          </umabh:HtmlContentArgument.RuntimeImages>
+                                          <umabh:HtmlContentArgument.ValueMappings>
+                                            <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="4">
+                                              <umabh:HtmlTableValueMapping Name="Table" Value="[dt_value]" />
+                                              <umabh:HtmlTableValueMapping Name="Table1" Value="[dt_value1]" />
+                                              <umabh:HtmlTableValueMapping Name="Table2" Value="[dt_value3]" />
+                                              <umabh:HtmlTableValueMapping Name="Table3" Value="[dt_value4]" />
+                                            </scg:List>
+                                          </umabh:HtmlContentArgument.ValueMappings>
+                                        </umabh:HtmlContentArgument>
+                                      </umab:SendMailX.HtmlBodyFromFile>
+                                    </umab:SendMailX>
+                                  </Sequence>
+                                </ActivityAction>
+                              </umab:GmailApplicationCard.Body>
+                              <umab:GmailApplicationCard.ClientId>
+                                <InArgument x:TypeArguments="x:String">
+                                  <Literal x:TypeArguments="x:String" Value="" />
+                                </InArgument>
+                              </umab:GmailApplicationCard.ClientId>
+                              <umab:GmailApplicationCard.ClientSecret>
+                                <InArgument x:TypeArguments="x:String">
+                                  <Literal x:TypeArguments="x:String" Value="" />
+                                </InArgument>
+                              </umab:GmailApplicationCard.ClientSecret>
+                            </umab:GmailApplicationCard>
+                          </Sequence>
+                        </ui:CommentOut.Body>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:CommentOut>
+                    </Sequence>
+                  </ui:CommentOut.Body>
+                </ui:CommentOut>
+              </Sequence>
+            </ui:CommentOut.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:CommentOut>
+          <umab:CreateHtmlContent DisplayName="Create HTML Content" sap:VirtualizedContainerService.HintSize="434,151" HtmlContent="[gold_htmlContent]" sap2010:WorkflowViewState.IdRef="CreateHtmlContent_3">
+            <umab:CreateHtmlContent.HtmlContentArg>
+              <umabh:HtmlContentArgument FilePath=".data/HtmlContent5.html">
+                <umabh:HtmlContentArgument.RuntimeImages>
+                  <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                </umabh:HtmlContentArgument.RuntimeImages>
+                <umabh:HtmlContentArgument.ValueMappings>
+                  <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="4">
+                    <umabh:HtmlTableValueMapping Name="GoldTable" Value="[dt_value]" />
+                    <umabh:HtmlTableValueMapping Name="GoldTable1" Value="[dt_value1]" />
+                    <umabh:HtmlTableValueMapping Name="GoldTable2" Value="[dt_value3]" />
+                    <umabh:HtmlTableValueMapping Name="GoldTable3" Value="[dt_value4]" />
+                  </scg:List>
+                </umabh:HtmlContentArgument.ValueMappings>
+              </umabh:HtmlContentArgument>
+            </umab:CreateHtmlContent.HtmlContentArg>
+          </umab:CreateHtmlContent>
+          <Assign sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[dataTime_value]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[DateAndTime.Now.ToString("MMM/dd/yyyy")]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Body="[gold_htmlContent]" DisplayName="Send SMTP Mail Message" Email="[In_Emailsmtp]" EnableSSL="True" sap:VirtualizedContainerService.HintSize="434,148" sap2010:WorkflowViewState.IdRef="SendMail_1" IsBodyHtml="True" Password="[In_Passwordsmtp]" Port="[In_smtpPort]" SecureConnection="Auto" Server="[In_smtpServer]" Subject="[&quot;Gold Rate Details&quot;+&quot; &quot; +dataTime_value]" To="[In_ToEmailsmtp]">
+            <ui:SendMail.Files>
+              <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+            </ui:SendMail.Files>
+          </ui:SendMail>
+        </Sequence>
+      </Sequence>
+      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="532,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+        <ui:CommentOut.Body>
+          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="518,610" sap2010:WorkflowViewState.IdRef="Sequence_13">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Sequence sap:VirtualizedContainerService.HintSize="476,558" sap2010:WorkflowViewState.IdRef="Sequence_12">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" DisplayName="Use Browser Chrome: Today Gold Rate: 22 &amp; 24 Carat Gold Price in India: 14 July 2022" sap:VirtualizedContainerService.HintSize="434,466" sap2010:WorkflowViewState.IdRef="NApplicationCard_5" InteractionMode="DebuggerApi" ScopeGuid="c4477f08-0321-467b-949c-722909d52980" Version="V2">
+                <uix:NApplicationCard.Body>
+                  <ActivityAction x:TypeArguments="x:Object">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,250" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="sd:DataTable" Name="ExtractDataTable" />
+                      </Sequence.Variables>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <uix:NExtractData AppendResults="False" ContinueOnError="True" DataTable="[ExtractDataTable]" DisplayName="Extract Table Data" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Table'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Gold Rate' ReferenceIdx='0' Name='Gold Rate'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Gold Rate In Bangalore' ReferenceIdx='1' Name='Gold Rate In Bangalore'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Gold Rate In Chennai' ReferenceIdx='2' Name='Gold Rate In Chennai'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Gold Rate In Delhi' ReferenceIdx='3' Name='Gold Rate In Delhi'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Gold Rate In Hyderabad' ReferenceIdx='4' Name='Gold Rate In Hyderabad'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Gold Rate In Mumbai' ReferenceIdx='5' Name='Gold Rate In Mumbai'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract-table get_columns_name='1' get_empty_columns='1' columns_name_source='Longest'&gt;&lt;column name='Gold Rate' attr='text' /&gt;&lt;column name='Gold Rate In Bangalore' attr='text' /&gt;&lt;column name='Gold Rate In Chennai' attr='text' /&gt;&lt;column name='Gold Rate In Delhi' attr='text' /&gt;&lt;column name='Gold Rate In Hyderabad' attr='text' /&gt;&lt;column name='Gold Rate In Mumbai' attr='text' /&gt;&lt;/extract-table&gt;" ExtractSimilar="True" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NExtractData_6" LimitExtractionTo="Rows" MaximumResults="0" ScopeIdentifier="c4477f08-0321-467b-949c-722909d52980" Version="V1">
+                        <uix:NExtractData.Target>
+                          <uix:TargetAnchorable DesignTimeRectangle="818, 235, 594, 116" FriendlyName="'Gold Rate'" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;" Guid="b1c48a54-fabd-4ac8-80b3-2b40b31c97e7" InformativeScreenshot="47a2b47efb6d044abce758eb26201b27.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Today Gold Rate: 22 &amp;amp; 24 Carat Gold Price in India: 14 July 2022' /&gt;" SearchSteps="Selector" Visibility="Interactive" />
+                        </uix:NExtractData.Target>
+                      </uix:NExtractData>
+                    </Sequence>
+                  </ActivityAction>
+                </uix:NApplicationCard.Body>
+                <uix:NApplicationCard.TargetApp>
+                  <uix:TargetApp Area="-8, -8, 1616, 876" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="2d84f48f3e573ece5ca9b12ded01375c.png" Selector="&lt;html app='chrome.exe' title='Today Gold Rate: 22 &amp;amp; 24 Carat Gold Price in India: 14 July 2022' /&gt;" Url="https://www.policybazaar.com/gold-rate/" />
+                </uix:NApplicationCard.TargetApp>
+              </uix:NApplicationCard>
+            </Sequence>
+          </Sequence>
+        </ui:CommentOut.Body>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:CommentOut>
+    </Sequence>
+  </Sequence>
+</Activity>
